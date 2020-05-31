@@ -5,10 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="container">
+        <form method="POST" class="form" id="form">
+            <h2>Registration Form</h2>
+            <div class="form-fields">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username">
+                <small>Error Message</small>
+            </div>
+            <div class="form-fields">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter Email Address">
+                <small>Error Message</small>
+            </div>
+            <div class="form-fields">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password">
+                <small>Error Message</small>
+            </div>
+            <div class="form-fields">
+                <label for="conf-password">Confirm Password</label>
+                <input type="password" placeholder="Re-enter Password" id="conf-password">
+                <small>Error Message</small>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
+
+    <script src="app.js"></script>
 </body>
 
 </html>
