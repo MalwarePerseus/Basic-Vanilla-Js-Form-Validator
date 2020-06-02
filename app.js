@@ -21,28 +21,43 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input) {
+        if (input.value.trim() === '') {
+            showError(input, `${getFieldName(input)} is Required.`);
+        } else {
+            showSuccess(input);
+        }
+    });
+}
+
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    if (username.value === '') {
-        showError(username, 'Username is required.');
-    } else {
-        showSuccess(username);
-    }
-    if (email.value === '') {
-        showError(email, 'Email is required.');
-    } else if (!isValidEmail(email.value)) {
-        showError(email, 'Please enter a valid email address.')
-    } else {
-        showSuccess(email);
-    }
-    if (password.value === '') {
-        showError(password, 'Password is required.');
-    } else {
-        showSuccess(password);
-    }
-    if (confpassword.value === '') {
-        showError(confpassword, 'You Need to Confirm the Password.');
-    } else {
-        showSuccess(confpassword);
-    }
+    checkRequired([username, email, password, confpassword]);
+    // if (username.value === '') {
+    //     showError(username, 'Username is required.');
+    // } else {
+    //     showSuccess(username);
+    // }
+    // if (email.value === '') {
+    //     showError(email, 'Email is required.');
+    // } else if (!isValidEmail(email.value)) {
+    //     showError(email, 'Please enter a valid email address.')
+    // } else {
+    //     showSuccess(email);
+    // }
+    // if (password.value === '') {
+    //     showError(password, 'Password is required.');
+    // } else {
+    //     showSuccess(password);
+    // }
+    // if (confpassword.value === '') {
+    //     showError(confpassword, 'You Need to Confirm the Password.');
+    // } else {
+    //     showSuccess(confpassword);
+    // }
 });
