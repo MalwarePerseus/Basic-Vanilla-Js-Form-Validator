@@ -16,11 +16,6 @@ function showSuccess(input) {
     formControl.className = 'form-fields success';
 }
 
-function isValidEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
 function checkRequired(inputArr) {
     inputArr.forEach(function(input) {
         if (input.value.trim() === '') {
@@ -35,9 +30,21 @@ function getFieldName(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
+function checkLength(input, min, max) {
+    if (input.value.length < min) {
+        showError(input, `${input} must be atleast ${min}Characters Long.`)
+    } else if (input.value.length > max) {
+        showError(input, `${input} cannot not be more than ${max} characters Long.`)
+    } else {
+        showSuccess(input);
+    }
+}
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     checkRequired([username, email, password, confpassword]);
+    checkLength(username, 3, 15);
+    checkLength(password, 6, 25);
     // if (username.value === '') {
     //     showError(username, 'Username is required.');
     // } else {
