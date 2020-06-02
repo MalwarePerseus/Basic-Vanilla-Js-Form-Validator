@@ -16,6 +16,15 @@ function showSuccess(input) {
     formControl.className = 'form-fields success';
 }
 
+function checkEmail(input) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(input.value)) {
+        showSuccess(input);
+    } else {
+        showError(input, "Please enter a valid Email Address!")
+    };
+}
+
 function checkRequired(inputArr) {
     inputArr.forEach(function(input) {
         if (input.value.trim() === '') {
